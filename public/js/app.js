@@ -35,7 +35,7 @@ weatherForm.addEventListener('submit', (e) => {
                         messageTwo.textContent += ' Rain volume: ' + data.forecast.precipitation + 'mm.'
                     if (data.forecast.humidity !== undefined)
                         messageTwo.textContent += ' Humidity: ' + data.forecast.humidity + '%.'
-                        
+
                     if (data.forecast.daily) {
                         data.forecast.daily.forEach(e => {
                             messageTwo.textContent += '\r\n' + e.day + ' - ' +
@@ -47,7 +47,6 @@ weatherForm.addEventListener('submit', (e) => {
                         })
                     }
                      
-                console.log(data.forecast)
             }
         })
     })

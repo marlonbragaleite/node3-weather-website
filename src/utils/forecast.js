@@ -12,7 +12,6 @@ const forecast = (longitude, latitude, callback) => {
             console.log(body)
             callback('Unable to find location')
         } else {
-            console.log(body)
             callback(undefined, {
                 temperature: body.current.temperature,
                 description: body.current.weather_descriptions[0],
@@ -36,7 +35,6 @@ const forecast2 = (longitude, latitude, callback) => {
             console.log(body)
             callback('Unable to find location')
         } else {
-            console.log(body)
             callback(undefined, {
                 temperature: body.current_weather.temperature,
                 description: wmo(body.current_weather.weathercode),
