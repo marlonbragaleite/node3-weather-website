@@ -27,8 +27,26 @@ weatherForm.addEventListener('submit', (e) => {
             } else {
                 messageOne.textContent = data.location
                 messageTwo.textContent = 
-                    data.forecast.temperature + ' degrees - ' +
+                    data.forecast.temperature + ' °C - ' +
                     data.forecast.description
+                    if (data.forecast.cloudcover) 
+                        messageTwo.textContent +=' (' + data.forecast.cloudcover + '% cloud cover).'
+                    if (data.forecast.precipitation !== undefined)
+                        messageTwo.textContent += ' Rain volume: ' + data.forecast.precipitation + 'mm.'
+                    if (data.forecast.humidity !== undefined)
+                        messageTwo.textContent += ' Humidity: ' + data.forecast.humidity + '%.'
+                        
+                    if (data.forecast.daily) {
+                        data.forecast.daily.forEach(e => {
+                            messageTwo.textContent += '\r\n' + e.day + ' - ' +
+                            e.description + '. ' +
+                            'Min: ' + e.min + '°C, ' +
+                            'Max: ' + e.max + '°C. ' +
+                            'Rain: ' + e.rain_mm + 'mm for ' +
+                            e.rain_h + ' hours '
+                        })
+                    }
+                     
                 console.log(data.forecast)
             }
         })
